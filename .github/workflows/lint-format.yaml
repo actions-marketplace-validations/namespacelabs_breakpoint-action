@@ -6,13 +6,15 @@ jobs:
   lint-format:
     permissions:
       contents: read
-    runs-on: ubuntu-latest
+    runs-on: nscloud-ubuntu-22.04-amd64-2x8
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
         with:
           # This should match the using value in `actions.yaml`
-          node-version: 16
-      - run: yarn install
-      - run: yarn run lint
-      - run: yarn run format-check
+          node-version: 20
+
+      - run: npm install
+      - run: npm run lint
+      - run: npm run format-check
